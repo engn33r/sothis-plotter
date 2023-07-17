@@ -1,6 +1,6 @@
 # sothis-plotter
 
-Makes pretty plots from sothis JSON output
+Makes pretty plots from [sothis](https://github.com/rainshowerLabs/sothis) JSON output
 
 ## Installation
 
