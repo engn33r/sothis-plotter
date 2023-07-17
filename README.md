@@ -12,10 +12,12 @@ pip3 install matplotlib
 
 ## Example
 
-You can test this tool on an example dataset provided in this repository:
+You can test this tool on an example dataset from Uniswap V2 provided in this repository:
 ```bash
 python3 plotter.py -i json_examples/univ2_eth_usdc.json -d
 ```
+
+![Plot](./example_plot.png)
 
 To generate a dataset similar to the example provided in this repository, run sothis to pull storage slot 0 ([`totalSupply`](https://evm.storage/eth/17715162/0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc)) for the Uniswap v2 ETH/USDC pool:
 ```bash
