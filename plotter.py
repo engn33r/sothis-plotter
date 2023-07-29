@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import json
 import argparse
+import csv
 
 def parse_args():
     parser = argparse.ArgumentParser(description="sothis plotting tool: visualize blockchain data the easy way")
@@ -12,13 +13,15 @@ def parse_args():
                         help="Number of bytes to ignore on the right of the storage slot")
     parser.add_argument("-l", "--bytes_left", default=0, type=int,
                         help="Number of bytes to ignore on the left of the storage slot")
+    parser.add_argument("-c", "--csv", default=0, type=str,
+                        help="CSV output file")
     return parser.parse_args()
 
 def debug(debug_mode: bool, print_msg: str):
     if(debug_mode):
         print(print_msg)
 
-def plot_data(json_file: str, debug_mode: bool, bytes_right: int, bytes_left: int):
+def plot_data(json_file: str, debug_mode: bool, bytes_right: int, bytes_left: int, csv_file: str):
     with open(json_file) as json_data:
         raw_data = json.load(json_data)
 
@@ -46,6 +49,15 @@ def plot_data(json_file: str, debug_mode: bool, bytes_right: int, bytes_left: in
         debug(debug_mode, "y: " + str(y))
         y_values.append(y)
 
+    # Output CSV if requested
+    if (csv_file):
+        with open(csv_file, 'w', newline='') as localfile:
+            outputfile = csv.writer(localfile, delimiter=',')
+            for i in range(len(blocknumbers)):
+                print(blocknumbers[i])
+                print(y_values[i])
+                outputfile.writerow([blocknumbers[i], y_values[i]])
+
     # Plot the data
     lines = plt.plot(blocknumbers, y_values)
     plt.xlabel('Block Number')
@@ -57,4 +69,4 @@ if __name__ == "__main__":
 
     # Parse input arguments
     args = parse_args()
-    plot_data(args.input_file, args.debug, args.bytes_right, args.bytes_left)
+    plot_data(args.input_file, args.debug, args.bytes_right, args.bytes_left, args.csv)
