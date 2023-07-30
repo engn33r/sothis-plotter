@@ -31,6 +31,7 @@ def plot_data(json_file: str, debug_mode: bool, bytes_right: int, bytes_left: in
     # Extract the data from the JSON file
     for datapoint in raw_data["state_changes"]:
         # x-axis shows block number
+        # first convert from hex to decimal
         x = int(datapoint["block_number"], 16)
         debug(debug_mode, "x: " + str(x))
         blocknumbers.append(x)
@@ -45,6 +46,7 @@ def plot_data(json_file: str, debug_mode: bool, bytes_right: int, bytes_left: in
         else: # if right is zero, ignore right splice cut-off and get value until the end
             hex_value_cut_to_size = hex_value_without_0x[left_cutoff:] # multiply by 2 to convert bytes value to hex, 1 byte = 2 hex chars
         # y-axis shows storage slot value
+        # first convert from hex to decimal
         y = int(hex_value_cut_to_size, 16)
         debug(debug_mode, "y: " + str(y))
         y_values.append(y)
