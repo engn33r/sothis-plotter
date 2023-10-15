@@ -67,13 +67,13 @@ USDC = 0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf7
 
 USDT = 0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf8
 
-3. Use sothis to collect tripool JSON data from blockchain. Pick your favorite RPC from https://chainlist.org/:
+3. Use sothis to collect tripool JSON data from blockchain. The start/end blocks in this example are chosen to show the impact of the March 2023 USDC depeg:
 
-`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944778998 --origin_block 17750000 --terminal_block 17800000 --query_interval 100 --filename tripool_dai.json`
+`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944778998 --origin_block 16790000 --terminal_block 16810000 --query_interval 100 --filename tripool_dai.json`
 
-`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944778999 --origin_block 17750000 --terminal_block 17800000 --query_interval 100 --filename tripool_usdc.json`
+`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944778999 --origin_block 16790000 --terminal_block 16810000 --query_interval 100 --filename tripool_usdc.json`
 
-`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944779000 --origin_block 17750000 --terminal_block 17800000 --query_interval 100 --filename tripool_usdt.json`
+`sothis --mode fast_track --source_rpc http://127.0.0.1:3000 --contract_address 0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7 --storage_slot 80084422859880547211683076133703299733277748156566366325829078699459944779000 --origin_block 16790000 --terminal_block 16810000 --query_interval 100 --filename tripool_usdt.json`
 
 4. Convert JSON data to csv:
 
